@@ -1,0 +1,13 @@
+.gitignore
+.openapi-generator-ignore
+api.ts
+api/apis.ts
+api/dpApi.ts
+git_push.sh
+model/citation.ts
+model/citedDocument.ts
+model/models.ts
+model/recollectRequest.ts
+model/remember200Response.ts
+package.json
+tsconfig.json
