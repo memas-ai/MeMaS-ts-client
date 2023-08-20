@@ -1,6 +1,6 @@
 /**
  * MeMaS DP APIs
- * This is the Data Plane APIs for MeMaS (Memory Management Service).
+ * This is the Data Plane client for MeMaS (Memory Management Service).  See https://github.com/memas-ai/MeMaS for more details.
  *
  * The version of the OpenAPI document: 0.1.0
  * Contact: max.yu@memas.ai
@@ -18,6 +18,7 @@ import http from 'http';
 import { CitedDocument } from '../model/citedDocument';
 import { RecollectRequest } from '../model/recollectRequest';
 import { Remember200Response } from '../model/remember200Response';
+import { RememberRequest } from '../model/rememberRequest';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
 
@@ -160,9 +161,9 @@ export class DpApi {
     /**
      * Memorize information
      * @summary Memorize information
-     * @param citedDocument Remember the following information
+     * @param rememberRequest Request object for remembering a document
      */
-    public async remember (citedDocument: CitedDocument, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Remember200Response;  }> {
+    public async remember (rememberRequest: RememberRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Remember200Response;  }> {
         const localVarPath = this.basePath + '/dp/remember';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -175,9 +176,9 @@ export class DpApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'citedDocument' is not null or undefined
-        if (citedDocument === null || citedDocument === undefined) {
-            throw new Error('Required parameter citedDocument was null or undefined when calling remember.');
+        // verify required parameter 'rememberRequest' is not null or undefined
+        if (rememberRequest === null || rememberRequest === undefined) {
+            throw new Error('Required parameter rememberRequest was null or undefined when calling remember.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -191,7 +192,7 @@ export class DpApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(citedDocument, "CitedDocument")
+            body: ObjectSerializer.serialize(rememberRequest, "RememberRequest")
         };
 
         let authenticationPromise = Promise.resolve();

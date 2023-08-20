@@ -1,7 +1,7 @@
 {
     "name": "memas-client",
-    "version": "0.1.0",
-    "description": "NodeJS client for memas-client",
+    "version": "0.1.1",
+    "description": "NodeJS Data Plane client for MeMaS (Memory Management Service)",
     "repository": {
         "type": "git",
         "url": "https://github.com/memas-ai/MeMaS-ts-client.git"
@@ -14,7 +14,7 @@
         "test": "npm run build && node dist/client.js"
     },
     "author": "OpenAPI-Generator Contributors",
-    "license": "Unlicense",
+    "license": "Apache-2.0",
     "dependencies": {
         "bluebird": "^3.5.0",
         "request": "^2.81.0",

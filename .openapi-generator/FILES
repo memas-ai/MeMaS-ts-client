@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 api.ts
 api/apis.ts
 api/dpApi.ts
@@ -9,5 +8,6 @@ model/citedDocument.ts
 model/models.ts
 model/recollectRequest.ts
 model/remember200Response.ts
-package.json
+model/rememberRequest.ts
+model/rememberRequestAllOf.ts
 tsconfig.json

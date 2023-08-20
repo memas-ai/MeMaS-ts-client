@@ -12,38 +12,23 @@
 
 import { RequestFile } from './models';
 
-export class Citation {
-    'sourceUri'?: string;
-    'sourceName'?: string;
-    'documentName'?: string;
-    'description'?: string;
+export class RememberRequestAllOf {
+    /**
+    * Full name of a corpus, specifying which namespace the corpus is under.  The name takes on the format of \\\"<namespace_pathname>:<corpus_name>\\\"
+    */
+    'corpusPathname'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            "name": "sourceUri",
-            "baseName": "source_uri",
-            "type": "string"
-        },
-        {
-            "name": "sourceName",
-            "baseName": "source_name",
-            "type": "string"
-        },
-        {
-            "name": "documentName",
-            "baseName": "document_name",
-            "type": "string"
-        },
-        {
-            "name": "description",
-            "baseName": "description",
+            "name": "corpusPathname",
+            "baseName": "corpus_pathname",
             "type": "string"
         }    ];
 
     static getAttributeTypeMap() {
-        return Citation.attributeTypeMap;
+        return RememberRequestAllOf.attributeTypeMap;
     }
 }
 

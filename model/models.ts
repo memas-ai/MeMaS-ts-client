@@ -4,6 +4,8 @@ export * from './citation';
 export * from './citedDocument';
 export * from './recollectRequest';
 export * from './remember200Response';
+export * from './rememberRequest';
+export * from './rememberRequestAllOf';
 
 import * as fs from 'fs';
 
@@ -22,6 +24,8 @@ import { Citation } from './citation';
 import { CitedDocument } from './citedDocument';
 import { RecollectRequest } from './recollectRequest';
 import { Remember200Response } from './remember200Response';
+import { RememberRequest } from './rememberRequest';
+import { RememberRequestAllOf } from './rememberRequestAllOf';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -43,6 +47,8 @@ let typeMap: {[index: string]: any} = {
     "CitedDocument": CitedDocument,
     "RecollectRequest": RecollectRequest,
     "Remember200Response": Remember200Response,
+    "RememberRequest": RememberRequest,
+    "RememberRequestAllOf": RememberRequestAllOf,
 }
 
 export class ObjectSerializer {
