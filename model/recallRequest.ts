@@ -12,20 +12,29 @@
 
 import { RequestFile } from './models';
 
-export class Remember200Response {
-    'success'?: boolean;
+export class RecallRequest {
+    'clue': string;
+    /**
+    * Full name of a corpus, specifying which namespace the corpus is under.  The name takes on the format of \\\"<namespace_pathname>:<corpus_name>\\\"
+    */
+    'corpusPathname': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            "name": "success",
-            "baseName": "success",
-            "type": "boolean"
+            "name": "clue",
+            "baseName": "clue",
+            "type": "string"
+        },
+        {
+            "name": "corpusPathname",
+            "baseName": "corpus_pathname",
+            "type": "string"
         }    ];
 
     static getAttributeTypeMap() {
-        return Remember200Response.attributeTypeMap;
+        return RecallRequest.attributeTypeMap;
     }
 }
 

@@ -12,7 +12,7 @@
 
 import { RequestFile } from './models';
 
-export class RememberRequestAllOf {
+export class MemorizeRequestAllOf {
     /**
     * Full name of a corpus, specifying which namespace the corpus is under.  The name takes on the format of \\\"<namespace_pathname>:<corpus_name>\\\"
     */
@@ -28,7 +28,7 @@ export class RememberRequestAllOf {
         }    ];
 
     static getAttributeTypeMap() {
-        return RememberRequestAllOf.attributeTypeMap;
+        return MemorizeRequestAllOf.attributeTypeMap;
     }
 }
 

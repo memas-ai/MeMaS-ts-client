@@ -5,9 +5,9 @@ api/dpApi.ts
 git_push.sh
 model/citation.ts
 model/citedDocument.ts
+model/memorize200Response.ts
+model/memorizeRequest.ts
+model/memorizeRequestAllOf.ts
 model/models.ts
-model/recollectRequest.ts
-model/remember200Response.ts
-model/rememberRequest.ts
-model/rememberRequestAllOf.ts
+model/recallRequest.ts
 tsconfig.json

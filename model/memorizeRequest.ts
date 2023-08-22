@@ -13,7 +13,7 @@
 import { RequestFile } from './models';
 import { Citation } from './citation';
 
-export class RememberRequest {
+export class MemorizeRequest {
     'document': string;
     'citation': Citation;
     /**
@@ -41,7 +41,7 @@ export class RememberRequest {
         }    ];
 
     static getAttributeTypeMap() {
-        return RememberRequest.attributeTypeMap;
+        return MemorizeRequest.attributeTypeMap;
     }
 }
 

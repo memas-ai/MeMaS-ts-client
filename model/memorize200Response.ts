@@ -12,29 +12,20 @@
 
 import { RequestFile } from './models';
 
-export class RecollectRequest {
-    'clue': string;
-    /**
-    * Full name of a corpus, specifying which namespace the corpus is under.  The name takes on the format of \\\"<namespace_pathname>:<corpus_name>\\\"
-    */
-    'corpusPathname': string;
+export class Memorize200Response {
+    'success'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            "name": "clue",
-            "baseName": "clue",
-            "type": "string"
-        },
-        {
-            "name": "corpusPathname",
-            "baseName": "corpus_pathname",
-            "type": "string"
+            "name": "success",
+            "baseName": "success",
+            "type": "boolean"
         }    ];
 
     static getAttributeTypeMap() {
-        return RecollectRequest.attributeTypeMap;
+        return Memorize200Response.attributeTypeMap;
     }
 }
 

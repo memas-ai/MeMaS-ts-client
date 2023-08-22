@@ -2,10 +2,10 @@ import localVarRequest from 'request';
 
 export * from './citation';
 export * from './citedDocument';
-export * from './recollectRequest';
-export * from './remember200Response';
-export * from './rememberRequest';
-export * from './rememberRequestAllOf';
+export * from './memorize200Response';
+export * from './memorizeRequest';
+export * from './memorizeRequestAllOf';
+export * from './recallRequest';
 
 import * as fs from 'fs';
 
@@ -22,10 +22,10 @@ export type RequestFile = string | Buffer | fs.ReadStream | RequestDetailedFile;
 
 import { Citation } from './citation';
 import { CitedDocument } from './citedDocument';
-import { RecollectRequest } from './recollectRequest';
-import { Remember200Response } from './remember200Response';
-import { RememberRequest } from './rememberRequest';
-import { RememberRequestAllOf } from './rememberRequestAllOf';
+import { Memorize200Response } from './memorize200Response';
+import { MemorizeRequest } from './memorizeRequest';
+import { MemorizeRequestAllOf } from './memorizeRequestAllOf';
+import { RecallRequest } from './recallRequest';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -45,10 +45,10 @@ let enumsMap: {[index: string]: any} = {
 let typeMap: {[index: string]: any} = {
     "Citation": Citation,
     "CitedDocument": CitedDocument,
-    "RecollectRequest": RecollectRequest,
-    "Remember200Response": Remember200Response,
-    "RememberRequest": RememberRequest,
-    "RememberRequestAllOf": RememberRequestAllOf,
+    "Memorize200Response": Memorize200Response,
+    "MemorizeRequest": MemorizeRequest,
+    "MemorizeRequestAllOf": MemorizeRequestAllOf,
+    "RecallRequest": RecallRequest,
 }
 
 export class ObjectSerializer {

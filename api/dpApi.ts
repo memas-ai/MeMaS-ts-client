@@ -16,9 +16,9 @@ import http from 'http';
 
 /* tslint:disable:no-unused-locals */
 import { CitedDocument } from '../model/citedDocument';
-import { RecollectRequest } from '../model/recollectRequest';
-import { Remember200Response } from '../model/remember200Response';
-import { RememberRequest } from '../model/rememberRequest';
+import { Memorize200Response } from '../model/memorize200Response';
+import { MemorizeRequest } from '../model/memorizeRequest';
+import { RecallRequest } from '../model/recallRequest';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
 
@@ -90,12 +90,12 @@ export class DpApi {
     }
 
     /**
-     * 
-     * @summary Recollects
-     * @param recollectRequest 
+     * Memorize information
+     * @summary Memorize information
+     * @param memorizeRequest Request object for memorizing a document
      */
-    public async recollect (recollectRequest: RecollectRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Array<CitedDocument>;  }> {
-        const localVarPath = this.basePath + '/dp/recollect';
+    public async memorize (memorizeRequest: MemorizeRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Memorize200Response;  }> {
+        const localVarPath = this.basePath + '/dp/memorize';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
         const produces = ['application/json'];
@@ -107,9 +107,9 @@ export class DpApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'recollectRequest' is not null or undefined
-        if (recollectRequest === null || recollectRequest === undefined) {
-            throw new Error('Required parameter recollectRequest was null or undefined when calling recollect.');
+        // verify required parameter 'memorizeRequest' is not null or undefined
+        if (memorizeRequest === null || memorizeRequest === undefined) {
+            throw new Error('Required parameter memorizeRequest was null or undefined when calling memorize.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -123,7 +123,76 @@ export class DpApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(recollectRequest, "RecollectRequest")
+            body: ObjectSerializer.serialize(memorizeRequest, "MemorizeRequest")
+        };
+
+        let authenticationPromise = Promise.resolve();
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: Memorize200Response;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            body = ObjectSerializer.deserialize(body, "Memorize200Response");
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * Recalls relevant information related to the given clue
+     * @summary Recalls information
+     * @param recallRequest 
+     */
+    public async recall (recallRequest: RecallRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Array<CitedDocument>;  }> {
+        const localVarPath = this.basePath + '/dp/recall';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'recallRequest' is not null or undefined
+        if (recallRequest === null || recallRequest === undefined) {
+            throw new Error('Required parameter recallRequest was null or undefined when calling recall.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'POST',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+            body: ObjectSerializer.serialize(recallRequest, "RecallRequest")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -149,75 +218,6 @@ export class DpApi {
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             body = ObjectSerializer.deserialize(body, "Array<CitedDocument>");
-                            resolve({ response: response, body: body });
-                        } else {
-                            reject(new HttpError(response, body, response.statusCode));
-                        }
-                    }
-                });
-            });
-        });
-    }
-    /**
-     * Memorize information
-     * @summary Memorize information
-     * @param rememberRequest Request object for remembering a document
-     */
-    public async remember (rememberRequest: RememberRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Remember200Response;  }> {
-        const localVarPath = this.basePath + '/dp/remember';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        let localVarFormParams: any = {};
-
-        // verify required parameter 'rememberRequest' is not null or undefined
-        if (rememberRequest === null || rememberRequest === undefined) {
-            throw new Error('Required parameter rememberRequest was null or undefined when calling remember.');
-        }
-
-        (<any>Object).assign(localVarHeaderParams, options.headers);
-
-        let localVarUseFormData = false;
-
-        let localVarRequestOptions: localVarRequest.Options = {
-            method: 'POST',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-            body: ObjectSerializer.serialize(rememberRequest, "RememberRequest")
-        };
-
-        let authenticationPromise = Promise.resolve();
-        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
-
-        let interceptorPromise = authenticationPromise;
-        for (const interceptor of this.interceptors) {
-            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
-        }
-
-        return interceptorPromise.then(() => {
-            if (Object.keys(localVarFormParams).length) {
-                if (localVarUseFormData) {
-                    (<any>localVarRequestOptions).formData = localVarFormParams;
-                } else {
-                    localVarRequestOptions.form = localVarFormParams;
-                }
-            }
-            return new Promise<{ response: http.IncomingMessage; body: Remember200Response;  }>((resolve, reject) => {
-                localVarRequest(localVarRequestOptions, (error, response, body) => {
-                    if (error) {
-                        reject(error);
-                    } else {
-                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "Remember200Response");
                             resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
