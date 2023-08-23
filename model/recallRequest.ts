@@ -15,9 +15,9 @@ import { RequestFile } from './models';
 export class RecallRequest {
     'clue': string;
     /**
-    * Full name of a corpus, specifying which namespace the corpus is under.  The name takes on the format of \\\"<namespace_pathname>:<corpus_name>\\\"
+    * Full namespace name, where child namespaces are appended after their parents\' names with \'.\'
     */
-    'corpusPathname': string;
+    'namespacePathname': string;
 
     static discriminator: string | undefined = undefined;
 
@@ -28,8 +28,8 @@ export class RecallRequest {
             "type": "string"
         },
         {
-            "name": "corpusPathname",
-            "baseName": "corpus_pathname",
+            "name": "namespacePathname",
+            "baseName": "namespace_pathname",
             "type": "string"
         }    ];
 
