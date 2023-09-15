@@ -6,8 +6,11 @@ git_push.sh
 model/citation.ts
 model/citedDocument.ts
 model/memorize200Response.ts
+model/memorize400Response.ts
 model/memorizeRequest.ts
 model/memorizeRequestAllOf.ts
 model/models.ts
+model/namespaceDoesNotExistError.ts
+model/namespaceIllegalNameError.ts
 model/recallRequest.ts
 tsconfig.json

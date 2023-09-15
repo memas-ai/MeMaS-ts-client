@@ -17,6 +17,7 @@ import http from 'http';
 /* tslint:disable:no-unused-locals */
 import { CitedDocument } from '../model/citedDocument';
 import { Memorize200Response } from '../model/memorize200Response';
+import { Memorize400Response } from '../model/memorize400Response';
 import { MemorizeRequest } from '../model/memorizeRequest';
 import { RecallRequest } from '../model/recallRequest';
 
